@@ -2,30 +2,43 @@
 
 namespace SalesWebMvc.Models
 {
-    public class Seller(int id, string name, int identifierCode, string email, double salary, DateTime birthDate)
+    public class Seller
     {
-        public int Id { get; set; } = id;
+        public int Id { get; set; }
 
         [DisplayName("Nome")]
-        public string Name { get; set; } = name ?? throw new ArgumentNullException(nameof(name));
+        public string Name { get; set; }
 
         [DisplayName("Código de identificação")]
-        public int IdentifierCode { get; set; } = identifierCode;
+        public int IdentifierCode { get; set; }
 
         [DisplayName("Email")]
-        public string Email { get; set; } = email ?? throw new ArgumentNullException(nameof(email));
+        public string Email { get; set; }
 
         [DisplayName("Salário")]
-        public double Salary { get; set; } = salary;
+        public double Salary { get; set; }
 
         [DisplayName("Data de nascimento")]
-        public DateTime BirthDate { get; set; } = birthDate;
+        public DateTime BirthDate { get; set; }
 
         [DisplayName("Departamento")]
         public Department Department { get; set; }
 
         [DisplayName("Vendas")]
         public ICollection<SalesRecord> Sales { get; set; } = new List<SalesRecord>();
+
+        public Seller(int id, string name, int identifierCode, string email, double salary, DateTime birthDate, Department department)
+        {
+            Id = id;
+            Name = name ?? throw new ArgumentNullException(nameof(name));
+            IdentifierCode = identifierCode;
+            Email = email ?? throw new ArgumentNullException(nameof(email));
+            Salary = salary;
+            BirthDate = birthDate;
+            Department = department ?? throw new ArgumentNullException(nameof(department));
+        }
+
+        public Seller() { }
 
         public void AddSales(SalesRecord record)
         {

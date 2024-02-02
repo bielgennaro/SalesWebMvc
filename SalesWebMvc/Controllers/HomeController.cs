@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using SalesWebMvc.Models.Viewmodels;
 
 using System.Diagnostics;
-using NuGet.Configuration;
 
 namespace SalesWebMvc.Controllers
 {
